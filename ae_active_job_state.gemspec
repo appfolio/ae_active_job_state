@@ -14,4 +14,8 @@ Gem::Specification.new do |spec|
   spec.license       = 'MIT'
   spec.files         = Dir['**/*'].select { |f| f[%r{^(lib/|LICENSE.txt|.*gemspec)}] }
   spec.require_paths = ['lib']
+
+  spec.add_dependency 'activejob', '>= 6', '< 7'
+  spec.add_dependency 'activerecord', '>= 6', '< 7'
+  spec.add_dependency 'activesupport', '>= 6', '< 7'
 end
