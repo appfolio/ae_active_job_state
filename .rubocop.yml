@@ -55,3 +55,6 @@ Style/SymbolArray:
 
 Style/WordArray:
   Enabled: false
+
+Metrics/BlockLength:
+  Max: 100
