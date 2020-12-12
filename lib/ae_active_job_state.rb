@@ -7,3 +7,5 @@ require 'active_record'
 
 module AeActiveJobState
 end
+
+require 'ae_active_job_state/job_state'
