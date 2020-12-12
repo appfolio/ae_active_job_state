@@ -14,7 +14,7 @@ class CreateAeActiveJobStateTables < ActiveRecord::Migration[6.0]
       t.datetime :finished_at
       t.datetime :failed_at
 
-      t.string :active_job_id, null: false, index: true
+      t.string :active_job_id, null: false, index: { unique: true }
     end
   end
 end

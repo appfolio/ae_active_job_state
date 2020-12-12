@@ -10,6 +10,12 @@ describe AeActiveJobState::JobState, type: %i[model] do
     end
   end
 
+  describe 'uniqueness validations' do
+    subject { described_class.create!(status: 'pending', active_job_id: 'qwerty') }
+
+    it { is_expected.to validate_uniqueness_of(:active_job_id).case_insensitive }
+  end
+
   describe 'state transitions' do
     let(:js) { described_class.create!(status: 'pending', active_job_id: 'qwerty') }
 
