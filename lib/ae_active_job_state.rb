@@ -11,3 +11,4 @@ end
 
 require 'ae_active_job_state/job_state'
 require 'ae_active_job_state/has_job_state'
+require 'ae_active_job_state/delete_old_job_states_job'
