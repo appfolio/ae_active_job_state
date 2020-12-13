@@ -94,7 +94,11 @@ job.job_state.result == { 'value' => 20 }
 
 ## Running test
 
-`bundle exec rspec`
+This gem assumes MySQL running at port 3307 on IP address 127.0.0.1. The quickest way to set this up is to use docker:
+
+`docker run -d -v /tmp/mysql_data:/var/lib/mysql --name mysql5.7 -e MYSQL_ALLOW_EMPTY_PASSWORD=true -p 3307:3306 mysql:5.7`
+
+Then you can run rpsec `bundle exec rspec`
 
 ## Running rubocop
 

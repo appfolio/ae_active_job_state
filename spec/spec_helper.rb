@@ -47,7 +47,6 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
-Time.zone = 'UTC'
 ActiveJob::Base.queue_adapter = :test
 
 require 'sample_jobs'
