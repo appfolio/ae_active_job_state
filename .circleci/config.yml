@@ -7,7 +7,12 @@ commands:
       - run: bundle install
       - run: bundle exec rubocop
       - run: bundle exec appraisal install
-      - run: bundle exec appraisal rspec --format progress --format RspecJunitFormatter
+      - run:
+          name: Wait for DB
+          command: dockerize -wait tcp://127.0.0.1:3307 -timeout 1m
+      - run: bundle exec appraisal rspec --format progress --format RspecJunitFormatter --out spec_results/rspec.xml
+      - store_test_results:
+          path: spec_results
 
 jobs:
   test-ruby-263:
@@ -15,11 +20,17 @@ jobs:
       - bundle_install_and_test
     docker:
       - image: circleci/ruby:2.6.3
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_TCP_PORT: 3307
   test-ruby-271:
     steps:
       - bundle_install_and_test
     docker:
       - image: circleci/ruby:2.7.1
+      - image: circleci/mysql:5.7
+        environment:
+          MYSQL_TCP_PORT: 3307
 
 workflows:
   rc:

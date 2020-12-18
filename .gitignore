@@ -11,3 +11,4 @@
 Gemfile.lock
 gemfiles/.bundle
 gemfiles/*.gemfile.lock
+/log/*

@@ -7,6 +7,7 @@ require:
   - rubocop-rspec
 
 AllCops:
+  NewCops: enable
   Exclude:
     - gemfiles/**/*
 
@@ -55,3 +56,16 @@ Style/SymbolArray:
 
 Style/WordArray:
   Enabled: false
+
+Metrics/BlockLength:
+  Max: 100
+
+RSpec/ExampleLength:
+  Max: 50
+
+RSpec/MultipleExpectations:
+  Max: 10
+
+Naming/AccessorMethodName:
+  Exclude:
+    - lib/ae_active_job_state/has_job_state.rb
