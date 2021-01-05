@@ -15,7 +15,7 @@ module AeActiveJobState
       state :failed
 
       event :run do
-        transitions from: :pending, to: :running
+        transitions from: %w[pending failed], to: :running
         after { update!(started_at: Time.now) }
       end
 
