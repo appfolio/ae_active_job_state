@@ -56,6 +56,31 @@ describe AeActiveJobState::HasJobState do
     end
   end
 
+  describe 'job state creation' do
+    it 'set the initial state before a wrapping transaction is complete to avoid race conditions' do
+      thread = nil
+      ActiveRecord::Base.transaction do
+        job = AlwaysPassJob.new
+        job.run_callbacks(:enqueue)
+        thread = Thread.new do
+          job.run_callbacks(:perform)
+        end
+        # Thread run should mark the thread for execution, but from the documentation does not seem to guarantee handing
+        # execution to the thread. So we then sleep this thread until the connections reach 2, which should indicate the
+        # thread is blocked on the database call.
+        thread.run
+        sleep(0.1) until ActiveRecord::Base.connection_pool.connections.count == 2
+      end
+      thread.value
+    end
+
+    it 'do not crash on perform if job state has already been created' do
+      job = AlwaysPassJob.new
+      job.run_callbacks(:enqueue)
+      job.run_callbacks(:perform)
+    end
+  end
+
   describe 'set job progress and result' do
     before { ActiveJob::Base.queue_adapter.perform_enqueued_jobs = true }
 

@@ -17,9 +17,25 @@ module AeActiveJobState
       end
 
       around_perform do |job, block|
-        @job_state = AeActiveJobState::JobState.find_by(active_job_id: job.job_id) ||
-                     AeActiveJobState::JobState.create!(status: 'pending', active_job_id: job.job_id,
-                                                        args: job.arguments)
+        # This is effectively the same logic as #create_or_find_by!, the main difference is we also fail on
+        # RecordInvalid. This allows us to have additional uniqueness validations in the model and still fall back to
+        # the find_by.
+        #
+        # We do this here to prevent a race condition if the job is processed before the initial job state is created.
+        # This can occur in the case that the job is enqueued in a transaction and a worker picks up the work before the
+        # transaction commits. In this case, this create will now wait on the insertion intention lock on the
+        # active_job_id index created by the insert in before_enqueue, throw a record not unique, then find the correct
+        # state model.
+        #
+        # We continue to handle the case where the state was fully inserted before this callback is hit and the case
+        # where the job was never enqueued.
+        begin
+          @job_state = AeActiveJobState::JobState.create!(status: 'pending', active_job_id: job.job_id,
+                                                          args: job.arguments)
+        rescue ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid
+          @job_state = AeActiveJobState::JobState.find_by!(active_job_id: job.job_id)
+        end
+
         job_state.run!
         job_state.reload
         block.call
