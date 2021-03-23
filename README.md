@@ -30,6 +30,16 @@ Then you need to copy the migration over
 $ rails generate ae_active_job_state
 ```
 
+## Upgrading
+
+Occasionally, additional migrations may be required when updating this gem. The migration generator takes a
+`since_version` flag that will take the version you are upgrading from and add any required migrations since that
+version.
+
+```bash
+$ rails generate ae_active_job_state --since_version 0.1.0
+```
+
 ## Usage
 
 ### Include this module in your job class
