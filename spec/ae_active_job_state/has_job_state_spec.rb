@@ -79,6 +79,18 @@ describe AeActiveJobState::HasJobState do
       job.run_callbacks(:enqueue)
       job.run_callbacks(:perform)
     end
+
+    it 'adds worker class to the state on enqueue' do
+      job = AlwaysPassJob.new
+      job.run_callbacks(:enqueue)
+      expect(AeActiveJobState::JobState.last.worker_class).to eq(AlwaysPassJob.name)
+    end
+
+    it 'adds worker class to the state on perform' do
+      job = AlwaysPassJob.new
+      job.run_callbacks(:perform)
+      expect(AeActiveJobState::JobState.last.worker_class).to eq(AlwaysPassJob.name)
+    end
   end
 
   describe 'set job progress and result' do

@@ -13,7 +13,7 @@ module AeActiveJobState
       # `perform_now` would go directly to around_perform
       before_enqueue do |job|
         @job_state = AeActiveJobState::JobState.create!(status: 'pending', active_job_id: job.job_id,
-                                                        args: job.arguments)
+                                                        args: job.arguments, worker_class: job.class)
       end
 
       around_perform do |job, block|
@@ -31,7 +31,7 @@ module AeActiveJobState
         # where the job was never enqueued.
         begin
           @job_state = AeActiveJobState::JobState.create!(status: 'pending', active_job_id: job.job_id,
-                                                          args: job.arguments)
+                                                          args: job.arguments, worker_class: job.class)
         rescue ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid
           @job_state = AeActiveJobState::JobState.find_by!(active_job_id: job.job_id)
         end
