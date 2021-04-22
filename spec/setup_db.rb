@@ -12,8 +12,7 @@ ActiveRecord::Base.configurations = {
     database: 'ae_active_job_state_test',
     username: 'root',
     host: '127.0.0.1',
-    encoding: 'utf8mb4',
-    port: 3307        # assume that Mysql 5.6 runs at port 3306 and 5.7 runs at port 3307
+    encoding: 'utf8mb4'
   }
 }
 ActiveRecord::Base.logger = Logger.new(File.join('log', 'test.log'))
