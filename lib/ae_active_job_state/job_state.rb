@@ -14,18 +14,18 @@ module AeActiveJobState
       state :finished
       state :failed
 
-      event :run do
-        transitions from: %w[pending failed], to: :running
+      event :running do
+        transitions to: :running
         after { update!(started_at: Time.now) }
       end
 
-      event :fail do
-        transitions from: :running, to: :failed
+      event :failed do
+        transitions to: :failed
         after { update!(failed_at: Time.now) }
       end
 
-      event :finish do
-        transitions from: :running, to: :finished
+      event :finished do
+        transitions to: :finished
         after { update!(finished_at: Time.now) }
       end
     end
