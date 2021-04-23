@@ -36,12 +36,12 @@ module AeActiveJobState
           @job_state = AeActiveJobState::JobState.find_by!(active_job_id: job.job_id)
         end
 
-        job_state.run!
+        job_state.running!
         job_state.reload
         block.call
-        job_state.finish!
+        job_state.finished!
       rescue StandardError => e
-        @job_state.fail!
+        @job_state.failed!
         raise e
       end
     end

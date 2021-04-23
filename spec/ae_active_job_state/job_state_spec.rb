@@ -24,20 +24,20 @@ describe AeActiveJobState::JobState, type: %i[model] do
     end
 
     it 'sets started_at when it runs' do
-      js.run!
+      js.running!
       expect(js.reload).to have_attributes(started_at: be_present, failed_at: nil, finished_at: nil, status: 'running')
     end
 
     it 'sets finished_at when it finishes' do
-      js.run!
-      js.finish!
+      js.running!
+      js.finished!
       expect(js.reload).to have_attributes(started_at: be_present, failed_at: nil, finished_at: be_present,
                                            status: 'finished')
     end
 
     it 'sets failed_at when it fails' do
-      js.run!
-      js.fail!
+      js.running!
+      js.failed
       expect(js.reload).to have_attributes(started_at: be_present, failed_at: be_present, finished_at: nil,
                                            status: 'failed')
     end
