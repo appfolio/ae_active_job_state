@@ -15,18 +15,15 @@ module AeActiveJobState
       state :failed
 
       event :running do
-        transitions to: :running
-        after { update!(started_at: Time.now) }
+        transitions to: :running, after: -> { self.started_at = Time.now }
       end
 
       event :failed do
-        transitions to: :failed
-        after { update!(failed_at: Time.now) }
+        transitions to: :failed, after: -> { self.failed_at = Time.now }
       end
 
       event :finished do
-        transitions to: :finished
-        after { update!(finished_at: Time.now) }
+        transitions to: :finished, after: -> { self.finished_at = Time.now }
       end
     end
   end
