@@ -37,7 +37,7 @@ describe AeActiveJobState::JobState, type: %i[model] do
 
     it 'sets failed_at when it fails' do
       js.running!
-      js.failed
+      js.failed!
       expect(js.reload).to have_attributes(started_at: be_present, failed_at: be_present, finished_at: nil,
                                            status: 'failed')
     end
