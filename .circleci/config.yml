@@ -1,35 +1,19 @@
 version: 2.1
-commands:
-  bundle_install_and_test:
-    steps:
-      - checkout
-      - run: gem install bundler -v 2.1.4
-      - run: bundle install
-      - run: bundle exec rubocop
-      - run: bundle exec appraisal install
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
-      - run: bundle exec appraisal rspec --format progress --format RspecJunitFormatter --out spec_results/rspec.xml
-      - store_test_results:
-          path: spec_results
 
-jobs:
-  test-ruby-263:
-    steps:
-      - bundle_install_and_test
-    docker:
-      - image: circleci/ruby:2.6.3
-      - image: circleci/mysql:5.7
-  test-ruby-271:
-    steps:
-      - bundle_install_and_test
-    docker:
-      - image: circleci/ruby:2.7.1
-      - image: circleci/mysql:5.7
+orbs:
+  gem-tool: appfolio/gem-tool@volatile
 
 workflows:
   rc:
     jobs:
-      - test-ruby-263
-      - test-ruby-271
+      - gem-tool/rake_test:
+          name: test_ruby-<< matrix.ruby_version >>
+          executor_tag: ruby_mysql
+          matrix:
+            parameters:
+              ruby_version:
+                - '3.1.0'
+                - '2.7.5'
+                - '2.6.9'
+          after-appraisal-install-steps:
+            - gem-tool/wait_mysql
