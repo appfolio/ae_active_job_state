@@ -7,6 +7,7 @@ require:
   - rubocop-rspec
 
 AllCops:
+  TargetRubyVersion: 2.6
   NewCops: enable
   Exclude:
     - gemfiles/**/*
@@ -25,6 +26,9 @@ Layout/MultilineMethodCallIndentation:
 
 Metrics/AbcSize:
   Enabled: false
+
+Metrics/BlockLength:
+  Max: 100
 
 Metrics/ClassLength:
   Exclude:
@@ -45,6 +49,16 @@ Metrics/ModuleLength:
 Metrics/PerceivedComplexity:
   Max: 16
 
+Naming/AccessorMethodName:
+  Exclude:
+    - lib/ae_active_job_state/has_job_state.rb
+
+RSpec/ExampleLength:
+  Max: 50
+
+RSpec/MultipleExpectations:
+  Max: 10
+
 Style/Documentation:
   Enabled: false
 
@@ -56,16 +70,3 @@ Style/SymbolArray:
 
 Style/WordArray:
   Enabled: false
-
-Metrics/BlockLength:
-  Max: 100
-
-RSpec/ExampleLength:
-  Max: 50
-
-RSpec/MultipleExpectations:
-  Max: 10
-
-Naming/AccessorMethodName:
-  Exclude:
-    - lib/ae_active_job_state/has_job_state.rb
