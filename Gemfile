@@ -5,8 +5,8 @@ source 'https://rubygems.org' # global source
 source 'https://rubygems.org' do
   gem 'appraisal', '>= 2.4', '< 3'
   gem 'bundler', '>= 2.2', '< 3'
-  gem 'mysql2', '>= 0.5.5', '< 1'
-  gem 'pry', '>= 0.14', '< 1'
+  gem 'debug', '>= 1.9', '< 2'
+  gem 'mysql2', '>= 0.5.6', '< 1'
   gem 'rake', '>= 13', '< 14'
   gem 'rspec', '>= 3.12', '< 4'
   gem 'rspec_junit_formatter', '>= 0.4', '< 1'

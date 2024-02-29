@@ -18,6 +18,7 @@ if ENV['WITH_COVERAGE'] == 'true'
   end
 end
 
+require 'debug'
 require 'shoulda-matchers'
 require 'rspec/rails/matchers'
 require 'rspec/rails/active_record'
