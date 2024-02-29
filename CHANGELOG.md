@@ -6,6 +6,9 @@
 
 **Merged pull requests:**
 
+- Appraise Ruby `3.3.0` [\#10](https://github.com/appfolio/ae_active_job_state/pull/10) ([Maimer](https://github.com/Maimer))
+- Appraise Rails 7.1 [\#9](https://github.com/appfolio/ae_active_job_state/pull/9) ([Maimer](https://github.com/Maimer))
+- Updates for Ruby `2.7.7`, `3.1.3`, `3.2.1` [\#8](https://github.com/appfolio/ae_active_job_state/pull/8) ([Maimer](https://github.com/Maimer))
 - Appraise rubies 2.6.9, 2.7.5, 3.1.0, and Rails 7 [\#7](https://github.com/appfolio/ae_active_job_state/pull/7) ([Maimer](https://github.com/Maimer))
 - update the timestamp of the events in same SQL statement with state transition [\#6](https://github.com/appfolio/ae_active_job_state/pull/6) ([mqchau](https://github.com/mqchau))
 - BREAKING CHANGE: Change state transition method to match names of state [\#5](https://github.com/appfolio/ae_active_job_state/pull/5) ([mqchau](https://github.com/mqchau))
