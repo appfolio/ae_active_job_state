@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/appfolio/ae_active_job_state/tree/HEAD)
 
-[Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/208d3a5391ec32ebc81b826b77a91bbe941fab10...HEAD)
+[Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/v1.3.0...HEAD)
+
+**Merged pull requests:**
+
+- Appraise Rails 7.2 [\#11](https://github.com/appfolio/ae_active_job_state/pull/11) ([Maimer](https://github.com/Maimer))
+
+## [v1.3.0](https://github.com/appfolio/ae_active_job_state/tree/v1.3.0) (2024-02-29)
+
+[Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/208d3a5391ec32ebc81b826b77a91bbe941fab10...v1.3.0)
 
 **Merged pull requests:**
 
