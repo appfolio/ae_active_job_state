@@ -3,7 +3,7 @@
 source 'https://rubygems.org' # global source
 
 source 'https://rubygems.org' do
-  gem 'appraisal', '>= 2.4', '< 3'
+  gem 'appraisal', '>= 2.5', '< 3'
   gem 'bundler', '>= 2.2', '< 3'
   gem 'debug', '>= 1.9', '< 2'
   gem 'mysql2', '>= 0.5.6', '< 1'
