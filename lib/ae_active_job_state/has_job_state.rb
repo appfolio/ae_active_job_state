@@ -12,8 +12,12 @@ module AeActiveJobState
       # before_enqueue is only triggered on `perform_later`
       # `perform_now` would go directly to around_perform
       before_enqueue do |job|
-        @job_state = AeActiveJobState::JobState.create!(status: 'pending', active_job_id: job.job_id,
-                                                        args: job.arguments, worker_class: job.class)
+        @job_state = AeActiveJobState::JobState.create!(
+          status: JobState::STATE_PENDING,
+          active_job_id: job.job_id,
+          args: job.arguments,
+          worker_class: job.class
+        )
       end
 
       around_perform do |job, block|
@@ -30,8 +34,12 @@ module AeActiveJobState
         # We continue to handle the case where the state was fully inserted before this callback is hit and the case
         # where the job was never enqueued.
         begin
-          @job_state = AeActiveJobState::JobState.create!(status: 'pending', active_job_id: job.job_id,
-                                                          args: job.arguments, worker_class: job.class)
+          @job_state = AeActiveJobState::JobState.create!(
+            status: JobState::STATE_PENDING,
+            active_job_id: job.job_id,
+            args: job.arguments,
+            worker_class: job.class
+          )
         rescue ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid
           @job_state = AeActiveJobState::JobState.find_by!(active_job_id: job.job_id)
         end

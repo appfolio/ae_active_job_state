@@ -18,6 +18,7 @@ if ENV['WITH_COVERAGE'] == 'true'
   end
 end
 
+require 'logger' # Due to issue with activesupport / concurrent-ruby
 require 'debug'
 require 'shoulda-matchers'
 require 'rspec/rails/matchers'

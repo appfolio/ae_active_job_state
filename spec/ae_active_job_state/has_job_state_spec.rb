@@ -71,25 +71,26 @@ describe AeActiveJobState::HasJobState do
         thread.run
         sleep(0.1) until ActiveRecord::Base.connection_pool.connections.count == 2
       end
-      thread.value
+      expect(thread.value).to be(true)
     end
 
     it 'do not crash on perform if job state has already been created' do
       job = AlwaysPassJob.new
       job.run_callbacks(:enqueue)
       job.run_callbacks(:perform)
+      expect(job.job_state).to be_finished
     end
 
     it 'adds worker class to the state on enqueue' do
       job = AlwaysPassJob.new
       job.run_callbacks(:enqueue)
-      expect(AeActiveJobState::JobState.last.worker_class).to eq(AlwaysPassJob.name)
+      expect(job.job_state.worker_class).to eq(AlwaysPassJob.name)
     end
 
     it 'adds worker class to the state on perform' do
       job = AlwaysPassJob.new
       job.run_callbacks(:perform)
-      expect(AeActiveJobState::JobState.last.worker_class).to eq(AlwaysPassJob.name)
+      expect(job.job_state.worker_class).to eq(AlwaysPassJob.name)
     end
   end
 

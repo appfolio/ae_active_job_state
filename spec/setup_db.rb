@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'rails'
+
 require 'generators/ae_active_job_state/templates/create_ae_active_job_state_tables'
 require 'generators/ae_active_job_state/templates/add_worker_class_column_to_job_state_table'
 
