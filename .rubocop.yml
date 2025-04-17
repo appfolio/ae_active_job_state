@@ -3,14 +3,17 @@
 # Please keep rules alphabetized within their sections (Style, Metrics, etc)
 # Please keep sections alphabetized and separated from other sections
 
-require:
+plugins:
   - rubocop-rspec
 
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 3.3
   NewCops: enable
   Exclude:
     - gemfiles/**/*
+
+Gemspec/RequireMFA:
+  Enabled: false
 
 Gemspec/RequiredRubyVersion:
   Enabled: false

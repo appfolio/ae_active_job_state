@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateAeActiveJobStateTables < ActiveRecord::Migration[6.0]
+class CreateAeActiveJobStateTables < ActiveRecord::Migration["#{Rails::VERSION::MAJOR}.#{Rails::VERSION::MINOR}"]
   def change
     create_table :ae_active_job_state_job_states do |t|
       t.timestamps null: false
