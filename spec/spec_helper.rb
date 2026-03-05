@@ -51,4 +51,8 @@ end
 
 ActiveJob::Base.queue_adapter = :test
 
-require 'sample_jobs'
+require 'sample_jobs/application_job'
+require 'sample_jobs/always_fail_job'
+require 'sample_jobs/always_pass_job'
+require 'sample_jobs/has_progress_job'
+require 'sample_jobs/has_result_job'
