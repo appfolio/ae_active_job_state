@@ -8,6 +8,7 @@ module AeActiveJobState
     validates :active_job_id, presence: true, uniqueness: { case_sensitive: false }
 
     include AASM
+
     aasm column: :status do
       state :pending, initial: true
       state :running
