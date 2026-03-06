@@ -2,16 +2,33 @@
 
 ## [Unreleased](https://github.com/appfolio/ae_active_job_state/tree/HEAD)
 
-[Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/v1.5.0...HEAD)
+[Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/v1.7.0...HEAD)
+
+**Merged pull requests:**
+
+- \[BANK-1738\] Update supported Ruby versions to 3.3.10, 3.4.8, 4.0.1 [\#15](https://github.com/appfolio/ae_active_job_state/pull/15) ([Maimer](https://github.com/Maimer))
+
+## [v1.7.0](https://github.com/appfolio/ae_active_job_state/tree/v1.7.0) (2026-03-06)
+
+[Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/v1.6.0...v1.7.0)
+
+## [v1.6.0](https://github.com/appfolio/ae_active_job_state/tree/v1.6.0) (2025-11-14)
+
+[Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/v1.5.0...v1.6.0)
+
+**Merged pull requests:**
+
+- \[BANK-1584\] Appraise `rails` 8.1 [\#14](https://github.com/appfolio/ae_active_job_state/pull/14) ([Maimer](https://github.com/Maimer))
+- \[BANK-1584\]  updated npm and yarn config to use the new package repository [\#13](https://github.com/appfolio/ae_active_job_state/pull/13) ([Maimer](https://github.com/Maimer))
+
+## [v1.5.0](https://github.com/appfolio/ae_active_job_state/tree/v1.5.0) (2025-04-17)
+
+[Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/v1.3.0...v1.5.0)
 
 **Merged pull requests:**
 
 - \[BANK-1370\] Appraise ruby 3.4 and rails 8 [\#12](https://github.com/appfolio/ae_active_job_state/pull/12) ([Maimer](https://github.com/Maimer))
 - Appraise Rails 7.2 [\#11](https://github.com/appfolio/ae_active_job_state/pull/11) ([Maimer](https://github.com/Maimer))
-
-## [v1.5.0](https://github.com/appfolio/ae_active_job_state/tree/v1.5.0) (2025-04-17)
-
-[Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/v1.3.0...v1.5.0)
 
 ## [v1.3.0](https://github.com/appfolio/ae_active_job_state/tree/v1.3.0) (2024-02-29)
 
