@@ -1,0 +1,16 @@
+name: Release Gem
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+jobs:
+  release-gem:
+    uses: appfolio/rubygems-releaser/.github/workflows/release.yml@v1
