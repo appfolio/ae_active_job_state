@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.7.1](https://github.com/appfolio/ae_active_job_state/compare/v1.7.0...v1.7.1) (2026-04-25)
+
+
+### Documentation
+
+* update changelog ([c2b17e4](https://github.com/appfolio/ae_active_job_state/commit/c2b17e4b91092252d9ef113014e03763899dab56))
+
+
+### Continuous Integration
+
+* add Release Please and gem-releaser workflows for automated releases ([a1ecb70](https://github.com/appfolio/ae_active_job_state/commit/a1ecb7098fff0bdf49a3418e51d1fbc77793e7d1))
+* add Release Please and gem-releaser workflows for automated releases ([a9de893](https://github.com/appfolio/ae_active_job_state/commit/a9de893e55914d1f20c0fdc18e8314d754958e2b))
+
 ## [Unreleased](https://github.com/appfolio/ae_active_job_state/tree/HEAD)
 
 [Full Changelog](https://github.com/appfolio/ae_active_job_state/compare/v1.7.0...HEAD)
