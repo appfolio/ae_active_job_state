@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.7.2](https://github.com/appfolio/ae_active_job_state/compare/v1.7.1...v1.7.2) (2026-05-07)
+
+
+### Miscellaneous Chores
+
+* migrate npm registry from CodeArtifact to JFrog ([2f8f993](https://github.com/appfolio/ae_active_job_state/commit/2f8f9933d5b4df9859528cacca3c2207b7b3fb07))
+* migrate npm registry from CodeArtifact to JFrog ([d35f4c7](https://github.com/appfolio/ae_active_job_state/commit/d35f4c7b2728561551f7245652c8bb6982f02244))
+
 ## [1.7.1](https://github.com/appfolio/ae_active_job_state/compare/v1.7.0...v1.7.1) (2026-04-25)
 
 
