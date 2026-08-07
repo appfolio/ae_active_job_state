@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.required_ruby_version = Gem::Requirement.new('< 4.1')
   spec.metadata['allowed_push_host'] = 'https://rubygems.org'
 
-  spec.add_dependency('aasm', ['>= 5.1', '< 6'])
+  spec.add_dependency('aasm', ['>= 5.1', '< 7'])
   spec.add_dependency('activejob', ['>= 7.2', '< 8.2'])
   spec.add_dependency('activerecord', ['>= 7.2', '< 8.2'])
   spec.add_dependency('activesupport', ['>= 7.2', '< 8.2'])
