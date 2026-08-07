@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.8.0](https://github.com/appfolio/ae_active_job_state/compare/v1.7.1...v1.8.0) (2026-08-07)
+
+
+### Features
+
+* support aasm 6 ([3ec2cd6](https://github.com/appfolio/ae_active_job_state/commit/3ec2cd6037f226fba099616467755cabd19b5bbd))
+
+
+### Miscellaneous Chores
+
+* migrate npm registry from CodeArtifact to JFrog ([2f8f993](https://github.com/appfolio/ae_active_job_state/commit/2f8f9933d5b4df9859528cacca3c2207b7b3fb07))
+* migrate npm registry from CodeArtifact to JFrog ([d35f4c7](https://github.com/appfolio/ae_active_job_state/commit/d35f4c7b2728561551f7245652c8bb6982f02244))
+* standardize CI and test configuration ([b95e6d6](https://github.com/appfolio/ae_active_job_state/commit/b95e6d64ad4f275e593983c6d31a61b2c74581f6))
+
+
+### Build System
+
+* migrate gem source from RubyGems to JFrog ([82809ee](https://github.com/appfolio/ae_active_job_state/commit/82809ee8f183b6d9a355170eed9dc9cb34c166e4))
+
 ## [1.7.1](https://github.com/appfolio/ae_active_job_state/compare/v1.7.0...v1.7.1) (2026-04-25)
 
 
