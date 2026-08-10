@@ -16,4 +16,4 @@ permissions:
 
 jobs:
   release:
-    uses: appfolio/rubygems-releaser/.github/workflows/release.yml@v1
+    uses: appfolio/rubygems-releaser/.github/workflows/release.yml@pim_setup_jfrog
