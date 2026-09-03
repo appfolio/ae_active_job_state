@@ -92,6 +92,19 @@ describe AeActiveJobState::HasJobState do
       job.run_callbacks(:perform)
       expect(job.job_state.worker_class).to eq(AlwaysPassJob.name)
     end
+
+    it 'does not crash on enqueue if a job state already exists for the active_job_id' do
+      # Simulates at-least-once delivery/duplicate enqueue racing to insert the same active_job_id.
+      job = AlwaysPassJob.new
+      existing_job_state = AeActiveJobState::JobState.create!(
+        status: AeActiveJobState::JobState::STATE_PENDING,
+        active_job_id: job.job_id,
+        worker_class: AlwaysPassJob.name
+      )
+
+      expect { job.run_callbacks(:enqueue) }.not_to raise_error
+      expect(job.job_state).to eq(existing_job_state)
+    end
   end
 
   describe 'set job progress and result' do

@@ -11,6 +11,10 @@ module AeActiveJobState
 
       # before_enqueue is only triggered on `perform_later`
       # `perform_now` would go directly to around_perform
+      #
+      # This mirrors the rescue in around_perform below: at-least-once delivery, retries, or duplicate
+      # enqueues can result in this callback running more than once for the same active_job_id, so we
+      # fall back to the existing record instead of letting RecordNotUnique bubble up.
       before_enqueue do |job|
         @job_state = AeActiveJobState::JobState.create!(
           status: JobState::STATE_PENDING,
@@ -18,6 +22,8 @@ module AeActiveJobState
           args: job.arguments,
           worker_class: job.class
         )
+      rescue ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid
+        @job_state = AeActiveJobState::JobState.find_by!(active_job_id: job.job_id)
       end
 
       around_perform do |job, block|
