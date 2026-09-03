@@ -92,6 +92,21 @@ describe AeActiveJobState::HasJobState do
       job.run_callbacks(:perform)
       expect(job.job_state.worker_class).to eq(AlwaysPassJob.name)
     end
+
+    it 'does not raise when the same job is enqueued concurrently and both share the same job state row' do
+      job_id = SecureRandom.uuid
+      job_one = AlwaysPassJob.new
+      job_one.job_id = job_id
+      job_two = AlwaysPassJob.new
+      job_two.job_id = job_id
+
+      expect do
+        job_one.run_callbacks(:enqueue)
+        job_two.run_callbacks(:enqueue)
+      end.to change(AeActiveJobState::JobState, :count).by(1)
+
+      expect(job_one.job_state.id).to eq(job_two.job_state.id)
+    end
   end
 
   describe 'set job progress and result' do
